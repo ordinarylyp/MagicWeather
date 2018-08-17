@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">MagicWeather</string>
+    <string name="app_name">魔力天气</string>
+    <string name="test_text">测试</string>
+    <string name="forecast_days">未来几天天气预报</string>
+    <string name="air_quality">空气质量</string>
+    <string name="aqi_index">AQI 指数</string>
+    <string name="pm_index">PM2.5 指数</string>
+    <string name="comfort_advice">生活建议</string>
+    <!--选择城市-->
+    <string name="tv_locate_city">当前定位</string>
+    <string name="tv_locating">正在定位…</string>
+    <string name="tv_select_city">选择城市</string>
+
+    <string name="slash">/</string>
 </resources>
