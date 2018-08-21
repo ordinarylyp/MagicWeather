@@ -28,6 +28,11 @@ public class ChooseAreaPresenterImpl implements ChooseAreaPresenter,LoadAreaList
         mInteractor = new ChooseAreaInteractorImpl();
     }
 
+    /**
+     * 与view层进行交互，向model层发出读取数据请求
+     * @param url
+     * @param type
+     */
     @Override
     public void queryFromServer(String url, String type) {
         mChooseAreaView.showProgressDialog();
@@ -39,6 +44,11 @@ public class ChooseAreaPresenterImpl implements ChooseAreaPresenter,LoadAreaList
         mChooseAreaView = null;
     }
 
+    /**
+     * 读取数据完成，对数据进行处理，并返回view层
+     * @param type
+     * @param responseText
+     */
     @Override
     public void onFinish(final String type, String responseText) {
         boolean result = false;

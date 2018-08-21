@@ -2,11 +2,13 @@ package com.lyp.magicweather.view.fragment;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.INotificationSideChannel;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +30,8 @@ import com.lyp.magicweather.model.db.County;
 import com.lyp.magicweather.model.db.Province;
 import com.lyp.magicweather.presenter.ChooseAreaPresenterImpl;
 import com.lyp.magicweather.util.ToastUtil;
+import com.lyp.magicweather.view.activity.MainActivity;
+import com.lyp.magicweather.view.activity.WeatherActivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -125,6 +129,19 @@ public class ChooseAreaFragment extends BaseFragment implements ChooseAreaView {
                 }else if (currentLevel == Constants.LEVEL_CITY){
                     selectedCity = mPresenter.selectedCity = cityList.get(position);
                     queryCounties();
+                }else if(currentLevel == Constants.LEVEL_COUNTY){
+                    String weatherId = countyList.get(position).getWeatherId();
+                    if (getActivity() instanceof MainActivity){
+                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                        intent.putExtra(Constants.WEATHER_ID,weatherId);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }else if (getActivity() instanceof WeatherActivity){
+                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        activity.drawerLayout.closeDrawers();
+                        activity.springView.setEnable(false);
+                        activity.requestWeather(weatherId);
+                    }
                 }
             }
         });
@@ -135,6 +152,22 @@ public class ChooseAreaFragment extends BaseFragment implements ChooseAreaView {
                     queryCities();
                 }else if (currentLevel == Constants.LEVEL_CITY){
                     queryProvinces();
+                }
+            }
+        });
+        layoutLocate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity() instanceof MainActivity){
+                    Intent intent = new Intent(getActivity(),WeatherActivity.class);
+                    intent.putExtra(Constants.WEATHER_ID,mCity);
+                    startActivity(intent);
+                    getActivity().finish();
+                }else if (getActivity() instanceof WeatherActivity){
+                    WeatherActivity activity = (WeatherActivity) getActivity();
+                    activity.drawerLayout.closeDrawers();
+                    activity.springView.setEnable(false);
+                    activity.requestWeather(mCity);
                 }
             }
         });
@@ -175,6 +208,9 @@ public class ChooseAreaFragment extends BaseFragment implements ChooseAreaView {
         mLocationClient.start();
     }
 
+    /**
+     * 显示各个省份的数据
+     */
     @Override
     public void queryProvinces() {
         tvTitle.setText("中国");
