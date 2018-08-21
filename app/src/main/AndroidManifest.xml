@@ -38,12 +38,14 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote">
-        </service>
+            android:process=":remote"></service>
 
-        <activity android:name=".view.activity.WeatherActivity">
+        <activity android:name=".view.activity.WeatherActivity"></activity>
 
-        </activity>
+        <service
+            android:name=".service.AutoUpdateService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

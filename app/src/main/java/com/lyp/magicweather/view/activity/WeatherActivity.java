@@ -23,6 +23,7 @@ import com.lyp.magicweather.common.Constants;
 import com.lyp.magicweather.model.gson.Forecast;
 import com.lyp.magicweather.model.gson.Suggestion;
 import com.lyp.magicweather.model.gson.Weather;
+import com.lyp.magicweather.service.AutoUpdateService;
 import com.lyp.magicweather.util.HttpUtil;
 import com.lyp.magicweather.util.PreUtil;
 import com.lyp.magicweather.util.ToastUtil;
@@ -312,6 +313,8 @@ public class WeatherActivity extends BaseActivity {
             }
         }
         nsvLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
 }
