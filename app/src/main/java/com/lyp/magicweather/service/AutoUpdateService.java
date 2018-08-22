@@ -19,6 +19,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * @function:后台更新天气数据
+ */
+
 public class AutoUpdateService extends Service {
     public AutoUpdateService() {
     }

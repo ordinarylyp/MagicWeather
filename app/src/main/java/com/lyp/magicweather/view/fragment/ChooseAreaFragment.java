@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.INotificationSideChannel;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -199,6 +200,9 @@ public class ChooseAreaFragment extends BaseFragment implements ChooseAreaView {
         }
     }
 
+    /**
+     * 请求位置服务
+     */
     private void requestLocation(){
         LocationClientOption option = new LocationClientOption();
         option.setScanSpan(500);
@@ -275,6 +279,7 @@ public class ChooseAreaFragment extends BaseFragment implements ChooseAreaView {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             mCity = bdLocation.getCity();
+            Log.e("ChooseAreaFragment:",mCity+"");
             tvLocatedCity.setText(mCity);
         }
     }

@@ -182,6 +182,9 @@ public class WeatherActivity extends BaseActivity {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
+    /**
+     * 向服务器请求图片数据并显示
+     */
     private void loadBingPic(){
         HttpUtil.sendOkHttpRequest(Constants.URL_BEING_PIC, new Callback() {
             @Override
@@ -203,6 +206,10 @@ public class WeatherActivity extends BaseActivity {
         });
     }
 
+    /**
+     *
+     * @param weatherId 向服务器请求天气数据并处理
+     */
     public void requestWeather(String weatherId){
         String weatherUrl = Constants.URL_WEATHER_BASE+weatherId+Constants.URL_WEATHER_KEY;
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
@@ -242,7 +249,10 @@ public class WeatherActivity extends BaseActivity {
         });
     }
 
-
+    /**
+     * 将天气信息展示出来
+     * @param weather
+     */
     private void showWeatherInfo(Weather weather){
         //头部显示basic和now信息
         String cityName = weather.basic.cityName;
