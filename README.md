@@ -1,5 +1,6 @@
 # MagicWeather
 一个简单的天气应用，运行过程如下
+
 ![magic](/gif/magic.gif "magic.gif")
 
 实现的功能有
