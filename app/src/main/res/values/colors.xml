@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#fff</color>
+    
+    <color name="shade_white">#78ffffff</color>
 
     <color name="translucent">#8000</color>
 

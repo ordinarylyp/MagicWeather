@@ -21,8 +21,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract void initData();
 
+    /**
+     * 设置状态栏沉浸
+     */
     public void initPreSetContentView(){
-
+        View decorView =getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                |View.SYSTEM_UI_FLAG_FULLSCREEN
+                |View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+        decorView.setSystemUiVisibility(option);
+        if (Build.VERSION.SDK_INT>=23)
+        {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
     }
 
     @Override
@@ -31,12 +42,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         initPreSetContentView();
         setContentView(getLayoutId());
         mBinder = ButterKnife.bind(this);
-        clearStatusBar();
+       // clearStatusBar();
         initView();
         initData();
     }
 
-    @TargetApi(19)
+
+/*    @TargetApi(19)
     private void clearStatusBar(){
         if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.LOLLIPOP){
             View decorView =getWindow().getDecorView();
@@ -50,7 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
             layoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS|layoutParams.flags);
         }
-    }
+    }*/
 
     @Override
     protected void onDestroy() {

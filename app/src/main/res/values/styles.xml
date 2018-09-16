@@ -1,4 +1,5 @@
-<resources>
+ <resources xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,15 +7,24 @@
         <item name="colorPrimary">@color/color_toolbar</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowActionBar">false</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <!--CoordinatorLayoutTheme-->
+    <style name="CoordTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimaryDark">@color/color_toolbar</item>
+        <item name="colorControlNormal">@color/color_toolbar</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-    </style>
-
-    <style name="ActionBar">
-        <item name="colorControlNormal">@color/color_toolbar</item>
-        <item name="searchViewStyle">@style/Widget.AppCompat.SearchView.ActionBar</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
     <!-- 5.0以下使用主题 -->
     <style name="AppTheme.NoActionBar" >
