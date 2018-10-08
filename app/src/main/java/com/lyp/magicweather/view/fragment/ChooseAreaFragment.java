@@ -140,7 +140,7 @@ public class ChooseAreaFragment extends BaseFragment implements ChooseAreaView {
                     }else if (getActivity() instanceof WeatherActivity){
                         WeatherActivity activity = (WeatherActivity) getActivity();
                         activity.drawerLayout.closeDrawers();
-                        activity.springView.setEnable(false);
+//                        activity.springView.setEnable(false);
                         activity.requestWeather(weatherId);
                     }
                 }

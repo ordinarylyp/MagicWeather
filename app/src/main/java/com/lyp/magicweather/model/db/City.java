@@ -2,6 +2,8 @@ package com.lyp.magicweather.model.db;
 
 import org.litepal.crud.DataSupport;
 
+import java.util.Objects;
+
 public class City extends DataSupport {
 
     private int id;
@@ -39,5 +41,22 @@ public class City extends DataSupport {
 
     public void setProvinceId(int provinceId) {
         this.provinceId = provinceId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
+        City city = (City) o;
+        return getId() == city.getId() &&
+                getCityCode() == city.getCityCode() &&
+                getProvinceId() == city.getProvinceId() &&
+                Objects.equals(getCityName(), city.getCityName());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId(), getCityName(), getCityCode(), getProvinceId());
     }
 }
